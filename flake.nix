@@ -1,7 +1,7 @@
 {
   description = "My NixOS Config";
   
-  inputs = {
+  inputs = rec {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,7 +10,7 @@
   };
   
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem rec {
       specialArgs = { inherit inputs; };
       system = "x86_64-linux";
       
@@ -25,7 +25,7 @@
 
           # TODO replace ryan with your own username
           home-manager.users.upwrd = import ./home.nix;
-
+          home-manager.extraSpecialArgs = specialArgs;
           # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
         }
       ];

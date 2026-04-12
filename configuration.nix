@@ -9,7 +9,9 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # Include Home Manager
-      ./home.nix    ];
+      ./home.nix
+
+    ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -88,8 +90,14 @@
 
   # Enable Broadcom STA driver for Mac
   hardware.enableAllFirmware = true;
-  
-security.polkit.enable = true;
+
+  # Enable Polkit for Wayland
+  security.polkit.enable = true;
+
+  # Enable Sway
+  programs.sway = {
+    enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
