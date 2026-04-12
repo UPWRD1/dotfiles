@@ -32,7 +32,13 @@
     useDHCP = false;
     interfaces.wlp3s0.useDHCP = true;
   };
+
+  # Stop boot lag?
   systemd.services.NetworkManager-wait-online.enable = false;
+
+  # Allow unfree software, MOSTLY for Broadcom driver support on Macbook hardware
+
+  nixpkgs.config.allowUnfree = true;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
