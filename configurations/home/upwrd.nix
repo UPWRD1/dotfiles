@@ -1,4 +1,4 @@
-{ flake, ... }:
+{ flake, pkgs, ... }:
 let
   inherit (flake) inputs;
   inherit (inputs) self;
@@ -14,7 +14,7 @@ in
     username = "upwrd";
     fullname = "Luke Davis";
     email = "lukendavis7@gmail.com";
+    shell = pkgs.zsh;
   };
-  shell = self.pkgs.zsh;
   home.stateVersion = "20.09";
 }

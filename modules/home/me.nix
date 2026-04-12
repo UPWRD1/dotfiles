@@ -15,6 +15,10 @@
         type = lib.types.str;
         description = "Your email for use in Git config";
       };
+      shell = lib.mkOption {
+        type = lib.types.package;
+        description = "The default shell for this user";
+      };
     };
   };
   config = {
