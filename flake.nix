@@ -1,14 +1,19 @@
 {
+  description = "My NixOS Config";
+  
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-mangager/release-unstable";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+  
   outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
+      system = "x86_64-linux";
+      
       modules = [
         ./configuration.nix
         # make home-manager as a module of nixos
