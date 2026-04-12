@@ -21,7 +21,7 @@
 
 
   networking.hostName = "nixos"; # Define your hostname.
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Use networkmanager on mac
   networking.networkmanager.wifi.backend = "wpa_supplicant";  
   networking.networkmanager.wifi.powersave = false;
