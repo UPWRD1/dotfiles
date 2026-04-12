@@ -74,7 +74,7 @@
   users.users.upwrd = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox helix ];
+    packages = with pkgs; [ firefox helix gh  ];
   };
 
   nixpkgs.config.allowUnfree = true;

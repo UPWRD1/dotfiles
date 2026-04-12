@@ -13,7 +13,7 @@ in
         home.stateVersion = "25.11";
 
         home.file = {
-          ".config/helix/config.toml".source = ./sources/helix/config.toml
-        }
+          ".config/helix/config.toml".source = ./sources/helix/config.toml;
+        };
     };
 }
