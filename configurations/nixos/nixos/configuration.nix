@@ -12,19 +12,29 @@
     # <home-manager/nixos>
   ];
   boot = {
+    loader = {
 
-    # Use the systemd-boot EFI boot loader.
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
-    loader.efi.efiSysMountPoint = "/boot/efi";
+      # Use the systemd-boot EFI boot loader.
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot/efi";
+      };
+    };
   };
   networking = {
 
-    hostName = "nixos"; # Define your hostname.
-    # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true; # Use networkmanager on mac
-    networkmanager.wifi.backend = "wpa_supplicant";
-    networkmanager.wifi.powersave = false;
+    hostName = "nixos";
+    networkmanager = {
+      # Define your hostname.
+      # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+      enable = true;
+      wifi = {
+        # Use networkmanager on mac
+        backend = "wpa_supplicant";
+        powersave = false;
+      };
+    };
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     # Per-interface useDHCP will be mandatory in the future, so this generated config
