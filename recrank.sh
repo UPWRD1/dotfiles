@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo nixos-rebuild switch --flake ./flake.nix
+sudo nixos-rebuild switch --flake ./
