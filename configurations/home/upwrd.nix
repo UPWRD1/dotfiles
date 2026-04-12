@@ -15,6 +15,6 @@ in
     fullname = "Luke Davis";
     email = "lukendavis7@gmail.com";
   };
-
+  shell = self.pkgs.zsh;
   home.stateVersion = "20.09";
 }

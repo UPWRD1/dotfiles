@@ -32,5 +32,7 @@
     fzf.enable = true;
     # Install btop https://github.com/aristocratos/btop
     btop.enable = true;
+    # Enable zsh for compat
+    zsh.enable = true;
   };
 }
