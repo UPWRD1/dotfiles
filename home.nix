@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 {
-    imports = [
-        (import "${home-manager}/nixos")
-    ];
-
+    
      wayland.windowManager.sway = {
     enable = true;
     config = rec {
