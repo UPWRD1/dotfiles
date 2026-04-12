@@ -5,36 +5,37 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # Include Home Manager
-      # <home-manager/nixos>
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # Include Home Manager
+    # <home-manager/nixos>
+  ];
+  boot = {
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    # Use the systemd-boot EFI boot loader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    loader.efi.efiSysMountPoint = "/boot/efi";
+  };
+  networking = {
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+    hostName = "nixos"; # Define your hostname.
+    # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true; # Use networkmanager on mac
+    networkmanager.wifi.backend = "wpa_supplicant";
+    networkmanager.wifi.powersave = false;
 
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true; # Use networkmanager on mac
-  networking.networkmanager.wifi.backend = "wpa_supplicant";  
-  networking.networkmanager.wifi.powersave = false;
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+    interfaces.wlp3s0.useDHCP = true;
+  };
   systemd.services.NetworkManager-wait-online.enable = false;
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.wlp3s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -47,49 +48,39 @@
   #   keyMap = "us";
   # };
 
-  # Enable the GNOME 3 Desktop Environment.
-  services.xserver.enable = true;
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  
-
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable sound.
   # hardware.pulseaudio.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.jane = {
   #   isNormalUser = true;
   #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   # };
-  
+
   users.users.upwrd = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ firefox helix ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [
+      firefox
+      helix
+    ];
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     vim
-     git
+    vim
+    git
   ];
 
   # Enable Broadcom STA driver for Mac
   hardware.enableAllFirmware = true;
-  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -119,4 +110,3 @@
   system.stateVersion = "20.09"; # Did you read the comment?
 
 }
-
