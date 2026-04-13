@@ -21,6 +21,10 @@
     less
 
     gh
+
+    # Essentials
+    helix
+    firefox
   ];
 
   # Programs natively supported by home-manager.

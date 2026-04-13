@@ -82,10 +82,7 @@
       "networkmanager"
       "wheel"
     ];
-    packages = with pkgs; [
-      firefox
-      helix
-    ];
+    
   };
 
   # List packages installed in system profile. To search, run:
