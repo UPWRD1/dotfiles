@@ -1,6 +1,7 @@
 {
   imports = [
     ./gnome.nix
+    ./sway.nix
   ];
   services = {
     xserver = {
