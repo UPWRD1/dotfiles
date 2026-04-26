@@ -1,7 +1,7 @@
-{ config, ... }:
-{
-  programs = {
-    regreet.enable = true;
-  };
+# { config, ... }:
+# {
+#   programs = {
+#     regreet.enable = true;
+#   };
 
-}
+# }
