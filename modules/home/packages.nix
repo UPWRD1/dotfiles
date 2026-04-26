@@ -39,7 +39,5 @@
     btop.enable = true;
     # Enable zsh for compat
     zsh.enable = true;
-    # Regreet for startup
-    regreet.enable = true;
   };
 }
