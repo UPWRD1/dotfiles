@@ -25,6 +25,7 @@
     # Essentials
     helix
     firefox
+    kitty
   ];
 
   # Programs natively supported by home-manager.
