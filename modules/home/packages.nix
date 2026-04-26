@@ -26,6 +26,9 @@
     helix
     firefox
     kitty
+
+    mako
+    wl-clipboard
   ];
 
   # Programs natively supported by home-manager.
