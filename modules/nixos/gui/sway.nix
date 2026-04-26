@@ -1,5 +1,11 @@
 { pkgs, ... }:
-{services.xserver.displayManager.sessionPackages = [ pkgs.sway ];
+{
+  environment.systemPackages = with pkgs; [
+    mako
+    wl-clipboard
+  ];
+
+  services.xserver.displayManager.sessionPackages = [ pkgs.sway ];
   wayland.windowManager.sway = {
     enable = true;
     wrapperFeatures.gtk = true; # Fixes common issues with GTK 3 apps

@@ -82,7 +82,17 @@
       "networkmanager"
       "wheel"
     ];
-    
+
+  };
+
+  #enable polkit for sway
+  security.polkit.enable = true;
+  # Hardware Support for Wayland Sway
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
   };
 
   # List packages installed in system profile. To search, run:
