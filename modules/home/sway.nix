@@ -11,7 +11,7 @@
       terminal = "kitty";
       startup = [
         # Launch Firefox on start
-        { command = "firefox"; }
+        { command = "noctalia-shell"; }
       ];
     };
   };

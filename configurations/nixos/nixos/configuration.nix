@@ -87,12 +87,6 @@
 
   #enable polkit for sway
   security.polkit.enable = true;
-  # Hardware Support for Wayland Sway
-  hardware = {
-    opengl = {
-      enable = true;
-    };
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -101,8 +95,21 @@
     git
   ];
 
-  # Enable Broadcom STA driver for Mac
-  hardware.enableAllFirmware = true;
+  hardware = {
+    # Hardware Support for Wayland Sway
+    opengl = {
+      enable = true;
+    };
+
+    # Enable Broadcom STA driver for Mac
+    enableAllFirmware = true;
+  };
+
+  services = {
+
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

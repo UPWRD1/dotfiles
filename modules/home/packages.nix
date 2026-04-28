@@ -42,5 +42,7 @@
     btop.enable = true;
     # Enable zsh for compat
     zsh.enable = true;
+    # Login daemon
+    regreet.enable = true;
   };
 }
