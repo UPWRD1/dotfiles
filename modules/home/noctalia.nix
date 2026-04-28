@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 {
-  home.packages = [
+  imports = [
     inputs.noctalia.homeModules.default
   ];
 
