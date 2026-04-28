@@ -1,6 +1,6 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  # configure options
+  home.packages = [ pkgs.noctalia-shell ]; # configure options
   programs.noctalia-shell = {
     enable = true;
     settings = {
