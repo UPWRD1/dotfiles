@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
-  home.packages = [ pkgs.noctalia-shell ]; # configure options
+    imports =  [ inputs.noctalia.homeModules.default ]; # configure options
   programs.noctalia-shell = {
     enable = true;
     settings = {
