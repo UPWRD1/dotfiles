@@ -1,6 +1,6 @@
-{ pkgs, inputs, ... }:
+{ flake, ... }:
 {
-    imports =  [ inputs.noctalia.homeModules.default ]; # configure options
+    imports =  [ flake.inputs.noctalia.homeModules.default ]; # configure options
   programs.noctalia-shell = {
     enable = true;
     settings = {

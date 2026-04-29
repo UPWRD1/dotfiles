@@ -87,14 +87,16 @@
 
   #enable polkit for sway
   security.polkit.enable = true;
+  environment = {
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim
-    git
-  ];
-
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    systemPackages = with pkgs; [
+      vim
+      git
+    ];
+    sessionVariables.NIXOS_OZONE_WL = "1";
+  };
   hardware = {
     # Hardware Support for Wayland Sway
     opengl = {
